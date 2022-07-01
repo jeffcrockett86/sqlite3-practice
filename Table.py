@@ -6,7 +6,9 @@ class Table:
         self.rows = []
         self.cols = []
         self.cells = []
-        self.html = ''
+        self.parent = {}
+        self.children = []
+        self.html = f'<table>{self.__repr__()}</table>'
 
     def rows(self):
         return self.rows
