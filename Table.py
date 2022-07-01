@@ -1,14 +1,19 @@
 #from Table import Table
 #>>> from Table import Table as t
+from Row import Row
 
 class Table:
-    def __init__(self):
+    def __init__():
+        # self.name = name
         self.rows = []
+        self.content = []
         self.cols = []
         self.cells = []
-        self.parent = {}
+        self.parent = []
         self.children = []
-        self.html = f'<table>{self.__repr__()}</table>'
+        # self.html = f'<table>{self.__repr__()}</table>'
+
+
 
     def rows(self):
         return self.rows
@@ -18,8 +23,8 @@ class Table:
 
     def add_row(self, row):
         self.rows.append(row)
-        return self.rows
+        return self
 
     def add_col(self, col):
         self.cols.append(col)
-        return self.cols
+        return self

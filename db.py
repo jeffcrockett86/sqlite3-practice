@@ -15,10 +15,15 @@
 # This module contains database functions
 
 import sqlite3
+from Table import Table as T
+from Row import Row as R
 
 conn = None
 cursor = None
 
+def add_rows(self, rows):
+    self.rows.append([row for row in rows])
+    return self
 # Attempt to open the database at the given location.  Return True if successful, False otherwise
 def openDatabase(path):
     global conn, cursor
@@ -32,25 +37,25 @@ def openDatabase(path):
 # Return true if the given column with the given value exists in the given table
 def rowExists(table, column, value):
     sql = "SELECT %s FROM %s WHERE %s = '%s'" % (column, table, column, value.replace("'", "''"))
-    cursor.execute(sql)
+    # cursor.execute(sql)
     return cursor.fetchone() != None
 
 # Return true if the given two columns with the given values exist in the given table
 def rowExists2(table, column1, value1, column2, value2):
     sql = "SELECT %s FROM %s WHERE %s = '%s' AND %s = '%s'" % (column1, table,
             column1, value1.replace("'", "''"), column2, value2.replace("'", "''"))
-    cursor.execute(sql)
+    # cursor.execute(sql)
     return cursor.fetchone() != None
 
 # Delete rows meeting the given condition from the given table
 def delete(table, column, value):
     sql = "DELETE FROM %s WHERE %s = '%s'" % (table, column, value.replace("'", "''"))
-    cursor.execute(sql)
+    # cursor.execute(sql)
 
 # Like delete but having two columns and two values
 def delete2(table, c1, v1, c2, v2):
     sql = "DELETE FROM %s WHERE %s = '%s' AND %s = '%s'" % (table, c1, v1.replace("'", "''"), c2, v2.replace("'", "''"))
-    cursor.execute(sql)
+    # cursor.execute(sql)
 
 # Insert the given values into the given table
 def insert(table, values):
@@ -58,9 +63,9 @@ def insert(table, values):
     for v in values:
         sql += "'" + v.replace("'", "''") + "',"
     sql = sql[:-1] + ')'
-    cursor.execute(sql)
+    # cursor.execute(sql)
 
-insert([[1,2,3], [2,3,4], [3,4,5], [4,5,6], [5,6,7]], ['option1', 'option2', 'option3', 'option4'])
+# insert([[1,2,3], [2,3,4], [3,4,5], [4,5,6], [5,6,7]], ['option1', 'option2', 'option3', 'option4'])
 
 # select([['1'],['2'],['3'],['4'],], ['1','2','3','4','5','6','7','8','9'])
 # Select a single column from the table, subject to the optional '=' conditions.  Return the
