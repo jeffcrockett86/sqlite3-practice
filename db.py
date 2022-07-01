@@ -60,6 +60,9 @@ def insert(table, values):
     sql = sql[:-1] + ')'
     cursor.execute(sql)
 
+insert([[1,2,3], [2,3,4], [3,4,5], [4,5,6], [5,6,7]], ['option1', 'option2', 'option3', 'option4'])
+
+# select([['1'],['2'],['3'],['4'],], ['1','2','3','4','5','6','7','8','9'])
 # Select a single column from the table, subject to the optional '=' conditions.  Return the
 # rows as a list of values rather than as a list of one-tuples as they come from sqlite3
 def select(table, column, whereCol="", whereVal="", whereCol2="", whereVal2=""):
