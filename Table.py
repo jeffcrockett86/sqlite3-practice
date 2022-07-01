@@ -1,5 +1,6 @@
 #from Table import Table
 #>>> from Table import Table as t
+from Cell import Cell
 from Row import Row
 
 class Table:
