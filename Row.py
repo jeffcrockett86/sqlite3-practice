@@ -1,3 +1,5 @@
+from Table import Table
+
 class Row(Table):
 
     def __init__(self, rows, cols):

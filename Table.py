@@ -1,13 +1,13 @@
 #from Table import Table
 #>>> from Table import Table as t
-from Cell import Cell
-from Row import Row
+# from Cell import Cell
+# from Row import Row
 
 class Table:
     def __init__():
         # self.name = name
         self.rows = []
-        self.content = []
+        # self.content = []
         self.cols = []
         self.cells = []
         self.parent = []

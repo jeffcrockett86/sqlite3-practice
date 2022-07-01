@@ -1,4 +1,4 @@
-import Row from Row
+from Row import Row
 
 class Cell(Row):
 
@@ -7,5 +7,5 @@ class Cell(Row):
         self.content = add_content(self, content)
 
     def add_content(self, content):
-        self.content.append(cell)
+        self.content.append(content)
         return self
