@@ -1,26 +1,27 @@
 #from Table import Table
 #>>> from Table import Table as t
 # from Cell import Cell
-# from Row import Row
+from Row import Row
 
 class Table:
-    def __init__():
+    def __init__(self):
         # self.name = name
         self.rows = []
         # self.content = []
-        self.cols = []
-        self.cells = []
-        self.parent = []
-        self.children = []
+        # self.cols = []
+        # self.cells = []
+        # self.parent = []
+        # self.children = []
         # self.html = f'<table>{self.__repr__()}</table>'
 
 
 
     def rows(self):
+        self.name = "<table> </table>"
         return self.rows
 
-    def cols(self):
-        return self.cols
+    # def cols(self):
+    #     return self.cols
 
     def add_row(self, row):
         self.rows.append(row)

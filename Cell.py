@@ -1,10 +1,9 @@
-from Row import Row
+class Cell:
 
-class Cell(Row):
-
-    def __init__(self, rows, cols):
-        super(rows, cols)
-        self.content = add_content(self, content)
+    def __init__(self, tables):
+        self.name = ''
+        self.tables = []
+        self.name "<td> </td>"
 
     def add_content(self, content):
         self.content.append(content)

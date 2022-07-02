@@ -1,10 +1,11 @@
-from Table import Table
+class Row:
 
-class Row(Table):
-
-    def __init__(self, rows, cols):
-        super(rows, cols)
+    def __init__(self):
         self.cells = []
+        self.name = '<tr> </tr>'
+
+    def name(self, name):
+        self.name = name
 
     def add_cell(self, cell):
         self.cells.append(cell)
