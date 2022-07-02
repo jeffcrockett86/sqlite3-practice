@@ -7,6 +7,7 @@ class Table:
     def __init__(self):
         # self.name = name
         self.rows = []
+        self.name = "<table> </table>"
         # self.content = []
         # self.cols = []
         # self.cells = []
@@ -17,7 +18,7 @@ class Table:
 
 
     def rows(self):
-        self.name = "<table> </table>"
+
         return self.rows
 
     # def cols(self):
