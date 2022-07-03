@@ -3,10 +3,12 @@ from Row import Row as R
 from Cell import Cell as C
 from Col import Col
 
-f = open('db.txt', 'rw')
+f = open('db.txt', 'r')
 rows = f.readlines()
 t = T()
-t.add_rows(rows)
+top_row = t.add_row(rows).rows[0]
 
-# for row in t.rows:
-#     c = C()
+for row in t.rows[0].split():
+    print(row)
+    for cell in Row:
+        c = C(parent=row)
