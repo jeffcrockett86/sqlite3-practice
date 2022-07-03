@@ -7,8 +7,11 @@ f = open('db.txt', 'r')
 rows = f.readlines()
 t = T()
 top_row = t.add_row(rows).rows[0]
+for cell in top_row:
+    c = C(parent=top_row)
 
-for row in t.rows[0].split():
-    print(row)
-    for cell in Row:
-        c = C(parent=row)
+# for row in t.rows.split():
+#     print(row)
+#     for cell in Row:
+#         c = C(parent=row)
+#         c.add_content(cell)

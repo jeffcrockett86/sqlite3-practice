@@ -1,0 +1,4 @@
+NAME	AGE_YRS	BREED	WEIGHT_LBS	MICROCHIPPED
+Callie	1	Corgi	16	no
+Charley	1.5	Basset Hound	25	no
+Jaxon	0.4	Beagle	19	yes
