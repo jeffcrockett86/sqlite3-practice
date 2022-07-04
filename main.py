@@ -14,7 +14,8 @@ t = T()
 
 t.rows = [R(parent=t, name=row) for row in rows]
 for row in t.rows:
-    row.cells = [C(name=row[i], parent=t) for i in range(row.length)]
+    row.cells = [C(name=t.rows[0].name[i], parent=row) for i in range(4)]
+    print(row.cells)
 
 
 # label_cells = [C(name=name, parent='parent') for name in t.rows[0][0].split('\t')]

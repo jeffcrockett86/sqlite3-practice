@@ -9,6 +9,10 @@ class Row:
     # def name(self, name):
     #     self.name = name
 
+
+    def __getitem__(self, item):
+        return self.cells[item]
+
     def add_cell(self, cell):
         self.cells.append(cell)
         return self
