@@ -9,7 +9,7 @@ import random
 
 f = open('db.txt', 'r')
 f2 = open('wordleAlpha.txt', 'r')
-words = f2.read().split('\n')
+words = f2.read().split('\n')[:-1]
 answer = words[random.randint(0, len(words))]
 print('the answer is', answer)
 wt = T("Wordle")
@@ -46,10 +46,41 @@ for i in range(5):
     c = C(name=wt.rows[0].name[i], parent = wt.rows[0])
     wt.rows[0].cells.append(c)
 
+    not_allowed = []
+
     for letter in wt.guess:
         if letter in answer and letter != answer[i]:
-            # x.is_yellow = True
+            c = C(name=letter, parent=wt.guess)
+            c.is_yellow = True
             print(letter, 'is yellow')
-        elif letter in wt.guess and letter in answer and letter == answer[i]:
-            # x.is_green = True
+            not_allowed.append(letter)
+        elif letter in answer and letter == answer[i]:
+            c = C(name=letter, parent=wt.guess)
+            c.is_green = True
             print(letter, 'is green')
+            not_allowed.append(letter)
+
+        else:
+            c = C(name=letter, parent=wt.guess)
+            c.is_black = True
+            print(letter, 'is black')
+
+#filter out all the words if any of their letters are in not_allowed
+def my_filter(word):
+    for i in range(len(word)):
+        if word[i] in not_allowed:
+            return False
+        else:
+            return True
+
+
+new_words = list(filter(lambda word: word[i] not in not_allowed for i in range, words))
+# for word in words:
+#     for letter in word:
+#         if letter not in not_allowed:
+#             new_words.append(word)
+
+# new_words = list(set(new_words))
+
+print(' and '.join(not_allowed), 'not allowed in the original word list')
+print(f'After your first guess, there are {len(new_words)} words left')
