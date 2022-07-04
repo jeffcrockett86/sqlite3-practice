@@ -2,6 +2,7 @@ from Table import Table as T
 from Row import Row as R
 from Cell import Cell as C
 from Col import Col
+from termcolor import colored
 import sys
 
 
@@ -17,6 +18,7 @@ guess_row = R(parent=wt, name=wt.guess)
 
 wt.rows = [R(name=row[:-1], parent=wt) for row in f2.readlines()]
 wt.rows.insert(0, guess_row)
+# wt.make_cols()
 # get list of lines in db.txt
 rows = f.readlines()
 
@@ -25,11 +27,14 @@ t = T("Template")
 
 
 t.rows = [R(parent=t, name=row) for row in rows]
-for row in t.rows:
-    row.cells = [C(name=t.rows[0].name[i], parent=row) for i in range(5)]
+for row in t.rows[1:]:
+    row.cells = [C(name=t.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
     # print(row.cells)
 
 wt.rows.insert(0, guess_row)
+for i in range(5):
+    c = C(name=wt.rows[0].name[i], parent = wt.rows[0])
+    wt.rows[0].cells.append(c)
 
 # label_cells = [C(name=name, parent='parent') for name in t.rows[0][0].split('\t')]
 # print(label_cells)

@@ -27,7 +27,7 @@ class Table:
 
 
     def make_cols(self):
-        self.cols = [Col(name = self.rows[0][i], parent=self.rows[i]) for i in range(len(self.rows))]
+        self.cols = [Col(name = self.rows[0][i], parent=self) for i in range(len(self.rows))]
         return self
 
 
