@@ -5,11 +5,12 @@
 from Col import Col
 
 class Table:
-    def __init__(self):
-        # self.name = name
+    def __init__(self, name):
+        self.name = name
         self.rows = []
         # self.content = []
         self.cols = []
+        self.guess = ''
         # self.cells = []
         # self.parent = []
         # self.children = []
