@@ -12,7 +12,11 @@ rows = f.readlines()
 t = T()
 
 
-t.rows = [R(parent=t, name='name') for row in rows]
+t.rows = [R(parent=t, name=row) for row in rows]
+for row in t.rows:
+    row.cells = [C(name=row[i], parent=t) for i in range(row.length)]
+
+
 # label_cells = [C(name=name, parent='parent') for name in t.rows[0][0].split('\t')]
 # print(label_cells)
 # add labels to columns, t.rows[0] is the top row
@@ -38,6 +42,9 @@ t.rows = [R(parent=t, name='name') for row in rows]
 
 
 print('rows are', t.rows)
+
+for row in t.rows:
+    row.name = row.name.split('\t')
 
 # for row in t.rows.split():
 #     print(row)
