@@ -1,9 +1,10 @@
 class Row:
 
-    def __init__(self):
+    def __init__(self, name, parent):
+        self.name = name
         self.cells = []
-        self.name = '<tr> </tr>'
-        self.parent = None
+        self.html = '<tr> </tr>'
+        self.parent = parent
 
     # def name(self, name):
     #     self.name = name

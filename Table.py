@@ -7,19 +7,24 @@ class Table:
     def __init__(self):
         # self.name = name
         self.rows = []
-        self.name = "<table> </table>"
         # self.content = []
-        # self.cols = []
+        self.cols = []
         # self.cells = []
         # self.parent = []
         # self.children = []
-        # self.html = f'<table>{self.__repr__()}</table>'
+        self.html = '<table> </table>'
 
 
 
     def rows(self):
-
         return self.rows
+
+    @property
+    def length(self):
+        return len(self.rows)
+
+
+
 
     # def cols(self):
     #     return self.cols
