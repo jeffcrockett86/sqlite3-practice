@@ -14,11 +14,19 @@ wt = T("Wordle")
 
 wt.guess = 'rents'
 print(wt.guess)
-guess_row = R(parent=wt, name=wt.guess)
+guess_row = R(parent=wt, name="guess_row")
+for i in range(len(wt.guess)):
+    c = C(parent=guess_row, name=wt.guess[i])
+    guess_row.cells.append(c)
 
+#make the rest of the rows
 wt.rows = [R(name=row[:-1], parent=wt) for row in f2.readlines()]
+
+#insert the guess row at the top of the table
 wt.rows.insert(0, guess_row)
+
 # wt.make_cols()
+
 # get list of lines in db.txt
 rows = f.readlines()
 
@@ -35,38 +43,3 @@ wt.rows.insert(0, guess_row)
 for i in range(5):
     c = C(name=wt.rows[0].name[i], parent = wt.rows[0])
     wt.rows[0].cells.append(c)
-
-# label_cells = [C(name=name, parent='parent') for name in t.rows[0][0].split('\t')]
-# print(label_cells)
-# add labels to columns, t.rows[0] is the top row
-# for cell in t.rows[0]:
-#     c = C(parent=cell, name=cell.split('\\')[0])
-#     print(c)
-#     # c.add_content(cell)
-#     print(c.parent)
-#     # t.rows[0].cells.append(c)
-#     print(type(t.rows[0]))
-#     print("top_row.cells is", cell)
-#     for x in [row for row in t.rows][0]:
-#         t.rows.append(x.split('/t'))
-#     print(t.rows)
-#     for item in t.rows:
-#         print(item[0])
-
-    # cells = [C(name=label, parent=item[0])for label in [item[0] for item in t.rows[0]]]
-    # t.rows[0].cells.append(cells)
-    # print(cells)
-    # item[0].cells = cells
-
-
-
-# print('rows are', t.rows)
-
-# for row in t.rows:
-#     row.name = row.name.split('\t')
-
-# for row in t.rows.split():
-#     print(row)
-#     for cell in Row:
-#         c = C(parent=row)
-#         c.add_content(cell)

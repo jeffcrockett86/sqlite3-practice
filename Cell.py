@@ -6,6 +6,9 @@ class Cell:
         self.html = "<td> </td>"
         self.parent = parent
         self.content = []
+        self.is_yellow = None
+        self.is_green = None
+        self.is_black = None
         # return self
 
     def add_content(self, content):
