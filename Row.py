@@ -12,3 +12,7 @@ class Row:
     def add_cell(self, cell):
         self.cells.append(cell)
         return self
+
+    @property
+    def length(self):
+        return len(self.cells)
