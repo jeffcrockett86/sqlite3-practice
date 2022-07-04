@@ -35,6 +35,9 @@ class Table:
     def length(self):
         return len(self.rows)
 
+    def contains(el):
+        return
+
 
 
 
