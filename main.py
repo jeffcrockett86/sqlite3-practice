@@ -13,8 +13,10 @@ t = T()
 
 #the top row has the labels for each column
 top_row = t.add_row(rows).rows[0]
+
+# add labels to columns, t.rows[0] is the top row
 for cell in t.rows[0]:
-    c = C(parent=top_row, name=cell.split('\\')[0])
+    c = C(parent=cell, name=cell.split('\\')[0])
     print(c)
     c.add_content(cell)
     print(c.parent)
@@ -25,14 +27,14 @@ for cell in t.rows[0]:
     for x in [row for row in t.rows][0]:
         t.rows.append(x.split('/t'))
     print(t.rows)
-    # for item in t.rows:
-    #     print(item[0])
+    for item in t.rows:
+        print(item[0])
 
-    cells = [C(name=label, parent=item[0])for label in [item[0] for item in bin][0].split('\t')]
+    # cells = [C(name=label, parent=item[0])for label in [item[0] for item in t.rows[0]]]
     # t.rows[0].cells.append(cells)
-    print(cells)
+    # print(cells)
+    # item[0].cells = cells
     """
-    >>> bin = []
 >>> for x in [row for row in t.rows][0]:
 ...   bin.append(x.split('/t'))
 ...
