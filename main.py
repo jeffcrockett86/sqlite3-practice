@@ -6,14 +6,15 @@
 # import termcolor
 # import sys
 # import random
-# in this file i will be using find and replace to make all this shit hard to read lmao
+# in this file i will be using find and replace to make all this C hard to read lmao
 # maybe i'll get rid of the original if i'm feeling extra devilish muahahaha
 
-from Table import M as FUCK
+from Table import M as M
 # from Table import Table as t
-from Cell import Cell as SHIT
-from Row import Row as GODDAMMIT
-from Col import Col as GODDAMMIT
+from Cell import Cell as C
+from Row import Row as R
+from Col import Col as Col
+import random
 """
 >>> from main import *
 >>> from m import m as T
@@ -32,12 +33,15 @@ f = open('db.txt', 'r')
 f2 = open('wordleAlpha.txt', 'r')
 words = f2.read().split('\n')[:-1]
 guess_num = 0
+
+m = M("Wordle")
 # answer = words[random.randint(0, len(words))]
-answer = 'hello'
-print('the answer is', answer)
-m =GODDAMMIT("Wordle")
+m.answer = words[random.randint(0, len(words))]
+print('the answer is', m.answer)
+
 m.guess = words[random.randint(0, len(words))]
-def play(words2=words, guess_num=guess_num):
+m.words = words
+def play(words2=m.words, guess_num=guess_num):
     while len(words2) > 0 and guess_num < 6:
 
 
@@ -48,13 +52,14 @@ def play(words2=words, guess_num=guess_num):
         print(m.guess)
         guess_row = R(parent=m, name=m.guess)
         for i in range(len(m.guess)):
-            c = C(parent=guess_row, name=it.guess[i])
-            guess_row.ms.append(c)
+            c = C(parent=guess_row, name=m.guess[i])
+
+            guess_row.cells.append(c)
 
         #make the rest of the rows
-        GODDAMMIT.rows = [R(name=row[:-1], parent=m) for row in f2.readlines()]
+        m.rows = [R(name=row[:-1], parent=m) for row in f2.readlines()]
 
-        #insert the guess row at the top of theGODDAMMIT
+        #insert the guess row at the top of them
         m.rows.insert(0, guess_row)
 
             # it.make_cols()
@@ -64,12 +69,12 @@ def play(words2=words, guess_num=guess_num):
         not_allowed = []
         new_words = []
             #make a new m
-        m2 = FUCK("Template")
-        m2.rows = [R(name='test')]
+        # m2 = M("Template")
+        # m2.rows = [R(name='test')]
 
         # t.rows = [R(parent=t, name=row) for row in t.rows]
-        for row in t.rows[1:]:
-            row.ms = [C(name=t.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
+        for row in m.rows[1:]:
+            row.cells = [C(name=m.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
             # print(row.cells)
 
             #letters in this list will be used to filter the word list
@@ -78,26 +83,26 @@ def play(words2=words, guess_num=guess_num):
 
         m.rows.insert(0, guess_row)
         for i in range(5):
-            c = C(name=it.rows[0].name[i], parent = it.rows[0])
+            c = C(name=m.rows[0].name[i], parent = m.rows[0])
             m.rows[0].cells.append(c)
 
 
 
-            for letter in it.guess:
-                if letter in answer and letter != answer[i]:
-                    c = C(name=letter, parent=it.guess)
+            for letter in m.guess:
+                if letter in m.answer and letter != m.answer[i]:
+                    c = C(name=letter, parent=m.guess)
                     c.is_yellow = True
                     print(letter, 'is yellow')
                     not_allowed.append(letter)
                     # break
-                elif letter in answer and letter == answer[i]:
-                    c = C(name=letter, parent=it.guess)
+                elif letter in m.answer and letter == m.answer[i]:
+                    c = C(name=letter, parent=m.guess)
                     c.is_green = True
                     print(letter, 'is green')
                     not_allowed.append(letter)
                     # break
                 else:
-                    c = C(name=letter, parent=it.guess)
+                    c = C(name=letter, parent=m.guess)
                     c.is_black = True
                     print(letter, 'is black')
                     # break
@@ -111,7 +116,8 @@ def play(words2=words, guess_num=guess_num):
                         return True
 
 
-        it.words = list(filter(my_filter, it.words))
+        m.words = list(filter(lambda x: x[0] in not_allowed, m.words))
+        print(len(m.words))
             # for word in words:
             #     for letter in word:
             #         if letter not in not_allowed:
@@ -123,9 +129,11 @@ def play(words2=words, guess_num=guess_num):
         # print(' and '.join(not_allowed), 'not allowed in the original word list')
         # print(f'After your first guess, there are {len(words)} words left')
         guess_num += 1
-        print(f'After {guess_num} guess there are {len(words2)} words left')
+        # print('m.words is', m.words)
+        print(f'After {guess_num} guess there are {len(m.words)} words left')
+        print(not_allowed)
         # play(words2=new_words, guess_num=guess_num)
-        return play(words2=words, guess_num=guess_num)
+        return play(words2=m.words, guess_num=guess_num)
         # {'guess_num': guess_num, 'not_allowed': not_allowed, 'words': words}
 
 print(play())

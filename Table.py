@@ -11,7 +11,8 @@ class M:
         self.words = []
         # self.content = []
         self.cols = []
-        self.guess = []
+        self.guess = ''
+        self.answer = ''
         # self.cells = []
         # self.parent = []
         # self.children = []
