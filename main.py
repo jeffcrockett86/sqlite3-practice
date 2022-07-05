@@ -28,7 +28,9 @@ SyntaxError: invalid syntax
 >>> from Col import Col
 >>>
 """
-
+import sqlite3
+con = sqlite3.connect('linkme.db')
+cur = con.cursor()
 f = open('db.txt', 'r')
 f2 = open('wordleAlpha.txt', 'r')
 words = f2.read().split('\n')[:-1]
