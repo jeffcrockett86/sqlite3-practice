@@ -9,6 +9,7 @@ class Cell:
         self.is_yellow = None
         self.is_green = None
         self.is_black = None
+        self.pos = None
         # return self
 
     def add_content(self, content):
@@ -17,4 +18,4 @@ class Cell:
 
 
     def __getitem__(self, item):
-        return self.cells[item]
+        return self.tables[item]

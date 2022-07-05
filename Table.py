@@ -8,9 +8,10 @@ class Table:
     def __init__(self, name):
         self.name = name
         self.rows = []
+        self.words = []
         # self.content = []
         self.cols = []
-        self.guess = ''
+        self.guess = []
         # self.cells = []
         # self.parent = []
         # self.children = []
@@ -35,8 +36,8 @@ class Table:
     def length(self):
         return len(self.rows)
 
-    def contains(el):
-        return
+    def contains(self, el):
+        return self.cell
 
 
 

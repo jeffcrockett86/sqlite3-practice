@@ -89,7 +89,7 @@ def play(words2=words, guess_num=guess_num):
                         return True
 
 
-        # new_words = list(filter(my_filter, words))
+        wt.words = list(filter(my_filter, wt.words))
             # for word in words:
             #     for letter in word:
             #         if letter not in not_allowed:
@@ -97,9 +97,9 @@ def play(words2=words, guess_num=guess_num):
 
             # new_words = list(set(new_words))
         # words = list(filter(my_filter, words))
-        print(words2)
-        print(' and '.join(not_allowed), 'not allowed in the original word list')
-        print(f'After your first guess, there are {len(words)} words left')
+        # print(words2)
+        # print(' and '.join(not_allowed), 'not allowed in the original word list')
+        # print(f'After your first guess, there are {len(words)} words left')
         guess_num += 1
         # play(words2=new_words, guess_num=guess_num)
         return play(words2=words, guess_num=guess_num)
