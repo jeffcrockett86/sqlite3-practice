@@ -13,8 +13,8 @@ guess_num = 0
 # answer = words[random.randint(0, len(words))]
 answer = 'hello'
 print('the answer is', answer)
-wt = T("Wordle")
-wt.guess = words[random.randint(0, len(words))]
+it = T("Wordle")
+it.guess = words[random.randint(0, len(words))]
 def play(words2=words, guess_num=guess_num):
     while len(words2) > 0 and guess_num < 6:
 
@@ -23,19 +23,19 @@ def play(words2=words, guess_num=guess_num):
 
 
 
-        print(wt.guess)
-        guess_row = R(parent=wt, name="guess_row")
-        for i in range(len(wt.guess)):
-            c = C(parent=guess_row, name=wt.guess[i])
+        print(it.guess)
+        guess_row = R(parent=it, name="guess_row")
+        for i in range(len(it.guess)):
+            c = C(parent=guess_row, name=it.guess[i])
             guess_row.cells.append(c)
 
         #make the rest of the rows
-        wt.rows = [R(name=row[:-1], parent=wt) for row in f2.readlines()]
+        it.rows = [R(name=row[:-1], parent=it) for row in f2.readlines()]
 
         #insert the guess row at the top of the table
-        wt.rows.insert(0, guess_row)
+        it.rows.insert(0, guess_row)
 
-            # wt.make_cols()
+            # it.make_cols()
 
             # get list of lines in db.txt
         # rows = f.readlines()
@@ -54,28 +54,28 @@ def play(words2=words, guess_num=guess_num):
 
 
 
-        wt.rows.insert(0, guess_row)
+        it.rows.insert(0, guess_row)
         for i in range(5):
-            c = C(name=wt.rows[0].name[i], parent = wt.rows[0])
-            wt.rows[0].cells.append(c)
+            c = C(name=it.rows[0].name[i], parent = it.rows[0])
+            it.rows[0].cells.append(c)
 
 
 
-            for letter in wt.guess:
+            for letter in it.guess:
                 if letter in answer and letter != answer[i]:
-                    c = C(name=letter, parent=wt.guess)
+                    c = C(name=letter, parent=it.guess)
                     c.is_yellow = True
                     print(letter, 'is yellow')
                     not_allowed.append(letter)
                     # break
                 elif letter in answer and letter == answer[i]:
-                    c = C(name=letter, parent=wt.guess)
+                    c = C(name=letter, parent=it.guess)
                     c.is_green = True
                     print(letter, 'is green')
                     not_allowed.append(letter)
                     # break
                 else:
-                    c = C(name=letter, parent=wt.guess)
+                    c = C(name=letter, parent=it.guess)
                     c.is_black = True
                     print(letter, 'is black')
                     # break
@@ -89,7 +89,7 @@ def play(words2=words, guess_num=guess_num):
                         return True
 
 
-        wt.words = list(filter(my_filter, wt.words))
+        it.words = list(filter(my_filter, it.words))
             # for word in words:
             #     for letter in word:
             #         if letter not in not_allowed:

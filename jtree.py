@@ -17,3 +17,5 @@ print(wt)
 # and the second column is the part of speech for the word
 words = open('wordleAlpha.txt', 'r').read().split('\n')[:-1]
 table = T(name="Parts of Speech")
+table.rows = [R(name='name') for row in table.rows]
+print('table.rows is', table.rows)
