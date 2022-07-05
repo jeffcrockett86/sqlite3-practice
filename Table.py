@@ -4,7 +4,7 @@
 # from Row import Row
 from Col import Col
 
-class Table:
+class M:
     def __init__(self, name):
         self.name = name
         self.rows = []
@@ -15,7 +15,7 @@ class Table:
         # self.cells = []
         # self.parent = []
         # self.children = []
-        self.html = '<table> </table>'
+        self.html = '<m> </m>'
 
     def __getitem__(self, item):
         return self.rows[item]

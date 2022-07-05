@@ -1,14 +1,15 @@
-from Table import Table as T
+# from m import m as T
 from Row import Row as R
 from Cell import Cell as C
 from Col import Col
+from Table import M
 import termcolor
 import sys
 import random
 
 """
 >>> from main import *
->>> from Table import Table as T
+>>> from m import m as T
 >>> from Row import Row as R
 >>> from Cell imprt Cell as C
   File "<stdin>", line 1
@@ -27,8 +28,8 @@ guess_num = 0
 # answer = words[random.randint(0, len(words))]
 answer = 'hello'
 print('the answer is', answer)
-it = T("Wordle")
-it.guess = words[random.randint(0, len(words))]
+m = M("Wordle")
+m.guess = words[random.randint(0, len(words))]
 def play(words2=words, guess_num=guess_num):
     while len(words2) > 0 and guess_num < 6:
 
@@ -37,16 +38,16 @@ def play(words2=words, guess_num=guess_num):
 
 
 
-        print(it.guess)
-        guess_row = R(parent=it, name="guess_row")
-        for i in range(len(it.guess)):
+        print(m.guess)
+        guess_row = R(parent=m, name=m.guess)
+        for i in range(len(m.guess)):
             c = C(parent=guess_row, name=it.guess[i])
             guess_row.cells.append(c)
 
         #make the rest of the rows
         it.rows = [R(name=row[:-1], parent=it) for row in f2.readlines()]
 
-        #insert the guess row at the top of the table
+        #insert the guess row at the top of the m
         it.rows.insert(0, guess_row)
 
             # it.make_cols()
@@ -55,7 +56,7 @@ def play(words2=words, guess_num=guess_num):
         # rows = f.readlines()
         not_allowed = []
         new_words = []
-            #make a new table
+            #make a new m
         t = T("Template")
 
 
@@ -115,7 +116,7 @@ def play(words2=words, guess_num=guess_num):
         # print(' and '.join(not_allowed), 'not allowed in the original word list')
         # print(f'After your first guess, there are {len(words)} words left')
         guess_num += 1
-        print(f'After {}')
+        print(f'After {guess_num} guess there are {len(words2)} words left')
         # play(words2=new_words, guess_num=guess_num)
         return play(words2=words, guess_num=guess_num)
         # {'guess_num': guess_num, 'not_allowed': not_allowed, 'words': words}
