@@ -38,14 +38,14 @@ def play(words2=words, guess_num=guess_num):
             # wt.make_cols()
 
             # get list of lines in db.txt
-        rows = f.readlines()
+        # rows = f.readlines()
         not_allowed = []
         new_words = []
             #make a new table
         t = T("Template")
 
 
-        t.rows = [R(parent=t, name=row) for row in rows]
+        t.rows = [R(parent=t, name=row) for row in t.rows]
         for row in t.rows[1:]:
             row.cells = [C(name=t.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
             # print(row.cells)
