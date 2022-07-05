@@ -15,6 +15,7 @@ from Cell import Cell as C
 from Row import Row as R
 from Col import Col as Col
 import random
+import sys
 """
 >>> from main import *
 >>> from m import m as T
@@ -41,8 +42,8 @@ m = M("Wordle")
 m.answer = words[random.randint(0, len(words))]
 print('the answer is', m.answer)
 
-m.guess = words[random.randint(0, len(words))]
-m.words = words
+# m.guess = sys.argv[1:][0]
+# m.words = words
 def play(words2=m.words, guess_num=guess_num):
     while len(words2) > 0 and guess_num < 6:
 
@@ -50,7 +51,8 @@ def play(words2=m.words, guess_num=guess_num):
 
 
 
-
+        m.guess = sys.argv[1:][0]
+        m.words = words
         print(m.guess)
         guess_row = R(parent=m, name=m.guess)
         for i in range(len(m.guess)):
@@ -117,9 +119,18 @@ def play(words2=m.words, guess_num=guess_num):
                     else:
                         return True
 
+        def my_filter2(words):
+            output = []
+            for i in range(len(words)):
+                letter = words[i]
+                if letter in not_allowed:
+                    return False
+                else:
+                    return True
 
-        m.words = list(filter(lambda x: x[0] in not_allowed, m.words))
-        print(len(m.words))
+        # words2 = list(filter(lambda x: x[0] in not_allowed, m.words))
+        words2 = filter(my_filter2, m.words)
+        print(len(words2))
             # for word in words:
             #     for letter in word:
             #         if letter not in not_allowed:
@@ -132,10 +143,24 @@ def play(words2=m.words, guess_num=guess_num):
         # print(f'After your first guess, there are {len(words)} words left')
         guess_num += 1
         # print('m.words is', m.words)
-        print(f'After {guess_num} guess there are {len(m.words)} words left')
-        print(not_allowed)
+        print(f'After {guess_num} guess there are {len(words2)} words left')
+        print(' and '.join(list(set(not_allowed))) + 'are not allowed.')
         # play(words2=new_words, guess_num=guess_num)
-        return play(words2=m.words, guess_num=guess_num)
+
+        """
+        >>> m.words = filter(lambda x, i: x[i] not in
+        not_allowed for i in range(len(x)), words)
+        """
+        # def my_filter2(words):
+        #     output = []
+        #     for i in range(len(words)):
+        #         letter = words[i]
+        #         if letter in not_allowed:
+        #             return False
+        #         else:
+        #             return True
+
+        return play(words2=words2, guess_num=guess_num)
         # {'guess_num': guess_num, 'not_allowed': not_allowed, 'words': words}
 
 print(play())
