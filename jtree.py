@@ -10,7 +10,7 @@ from nltk import word_tokenize
 text = word_tokenize("The dog is lazy")
 nltk.pos_tag(text)
 
-print(wt)
+# print(wt)
 # print(dir(sys.stdout))
 
 #make a table where the first column is all the five letter words

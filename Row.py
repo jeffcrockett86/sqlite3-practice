@@ -6,6 +6,7 @@ class Row:
         self.html = '<tr> </tr>'
         self.parent = parent
 
+
     # def name(self, name):
     #     self.name = name
 
@@ -20,3 +21,7 @@ class Row:
     @property
     def length(self):
         return len(self.cells)
+
+    @property
+    def id(self):
+        return hex('0x' + str(self.split('x')))

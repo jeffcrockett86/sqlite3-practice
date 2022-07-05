@@ -6,6 +6,20 @@ import termcolor
 import sys
 import random
 
+"""
+>>> from main import *
+>>> from Table import Table as T
+>>> from Row import Row as R
+>>> from Cell imprt Cell as C
+  File "<stdin>", line 1
+    from Cell imprt Cell as C
+              ^
+SyntaxError: invalid syntax
+>>> from Cell import Cell as C
+>>> from Col import Col
+>>>
+"""
+
 f = open('db.txt', 'r')
 f2 = open('wordleAlpha.txt', 'r')
 words = f2.read().split('\n')[:-1]
@@ -101,6 +115,7 @@ def play(words2=words, guess_num=guess_num):
         # print(' and '.join(not_allowed), 'not allowed in the original word list')
         # print(f'After your first guess, there are {len(words)} words left')
         guess_num += 1
+        print(f'After {}')
         # play(words2=new_words, guess_num=guess_num)
         return play(words2=words, guess_num=guess_num)
         # {'guess_num': guess_num, 'not_allowed': not_allowed, 'words': words}
