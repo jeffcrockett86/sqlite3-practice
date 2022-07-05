@@ -1,22 +1,29 @@
 # from m import m as T
-from Row import Row as R
-from Cell import Cell as C
-from Col import Col
-from Table import M
-import termcolor
-import sys
-import random
+# from Row import Row as R
+# from Cell import Cell as C
+# from Col import Col
+# from Table import M
+# import termcolor
+# import sys
+# import random
+# in this file i will be using find and replace to make all this shit hard to read lmao
+# maybe i'll get rid of the original if i'm feeling extra devilish muahahaha
 
+from Table import M as FUCK
+# from Table import Table as t
+from Cell import Cell as SHIT
+from Row import Row as GODDAMMIT
+from Col import Col as GODDAMMIT
 """
 >>> from main import *
 >>> from m import m as T
 >>> from Row import Row as R
->>> from Cell imprt Cell as C
+>>> from m imprt m as C
   File "<stdin>", line 1
-    from Cell imprt Cell as C
+    from m imprt m as C
               ^
 SyntaxError: invalid syntax
->>> from Cell import Cell as C
+>>> from m import m as C
 >>> from Col import Col
 >>>
 """
@@ -28,7 +35,7 @@ guess_num = 0
 # answer = words[random.randint(0, len(words))]
 answer = 'hello'
 print('the answer is', answer)
-m = M("Wordle")
+m =GODDAMMIT("Wordle")
 m.guess = words[random.randint(0, len(words))]
 def play(words2=words, guess_num=guess_num):
     while len(words2) > 0 and guess_num < 6:
@@ -42,13 +49,13 @@ def play(words2=words, guess_num=guess_num):
         guess_row = R(parent=m, name=m.guess)
         for i in range(len(m.guess)):
             c = C(parent=guess_row, name=it.guess[i])
-            guess_row.cells.append(c)
+            guess_row.ms.append(c)
 
         #make the rest of the rows
-        it.rows = [R(name=row[:-1], parent=it) for row in f2.readlines()]
+        GODDAMMIT.rows = [R(name=row[:-1], parent=m) for row in f2.readlines()]
 
-        #insert the guess row at the top of the m
-        it.rows.insert(0, guess_row)
+        #insert the guess row at the top of theGODDAMMIT
+        m.rows.insert(0, guess_row)
 
             # it.make_cols()
 
@@ -57,22 +64,22 @@ def play(words2=words, guess_num=guess_num):
         not_allowed = []
         new_words = []
             #make a new m
-        t = T("Template")
+        m2 = FUCK("Template")
+        m2.rows = [R(name='test')]
 
-
-        t.rows = [R(parent=t, name=row) for row in t.rows]
+        # t.rows = [R(parent=t, name=row) for row in t.rows]
         for row in t.rows[1:]:
-            row.cells = [C(name=t.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
+            row.ms = [C(name=t.rows[0].name[i], parent=row) for i in range(len(t.rows[1:]))]
             # print(row.cells)
 
             #letters in this list will be used to filter the word list
 
 
 
-        it.rows.insert(0, guess_row)
+        m.rows.insert(0, guess_row)
         for i in range(5):
             c = C(name=it.rows[0].name[i], parent = it.rows[0])
-            it.rows[0].cells.append(c)
+            m.rows[0].cells.append(c)
 
 
 
