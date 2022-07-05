@@ -44,16 +44,17 @@ print('the answer is', m.answer)
 
 # m.guess = sys.argv[1:][0]
 # m.words = words
-def play(words2=m.words, guess_num=guess_num):
+def play(words2=words, guess_num=guess_num, guess=sys.argv[1:]):
     while len(words2) > 0 and guess_num < 6:
 
 
 
 
 
-        m.guess = sys.argv[1:][0]
-        m.words = words
+        # m.guess = sys.argv[1:][0]
+        m.words = words2
         print(m.guess)
+
         guess_row = R(parent=m, name=m.guess)
         for i in range(len(m.guess)):
             c = C(parent=guess_row, name=m.guess[i])
@@ -87,7 +88,7 @@ def play(words2=m.words, guess_num=guess_num):
 
         m.rows.insert(0, guess_row)
         for i in range(5):
-            c = C(name=m.rows[0].name[i], parent = m.rows[0])
+            c = C(name=m.rows[0].name, parent = m.rows[0])
             m.rows[0].cells.append(c)
 
 
@@ -129,8 +130,9 @@ def play(words2=m.words, guess_num=guess_num):
                     return True
 
         # words2 = list(filter(lambda x: x[0] in not_allowed, m.words))
-        words2 = filter(my_filter2, m.words)
+        words2 = list(filter(my_filter2, words))
         print(len(words2))
+        print('m.words is', words2)
             # for word in words:
             #     for letter in word:
             #         if letter not in not_allowed:
@@ -144,7 +146,8 @@ def play(words2=m.words, guess_num=guess_num):
         guess_num += 1
         # print('m.words is', m.words)
         print(f'After {guess_num} guess there are {len(words2)} words left')
-        print(' and '.join(list(set(not_allowed))) + 'are not allowed.')
+        not_allowed = ['e', 's']
+        print(' and '.join(list(set(not_allowed))) + ' are not allowed.')
         # play(words2=new_words, guess_num=guess_num)
 
         """
@@ -159,8 +162,9 @@ def play(words2=m.words, guess_num=guess_num):
         #             return False
         #         else:
         #             return True
+        tuple_list = [(word, i) for letter in i for word in words if letter in ['e', 's']]
 
-        return play(words2=words2, guess_num=guess_num)
+        return play(words2=words2, guess_num=guess_num, guess=sys.argv[1:])
         # {'guess_num': guess_num, 'not_allowed': not_allowed, 'words': words}
 
-print(play())
+play()
