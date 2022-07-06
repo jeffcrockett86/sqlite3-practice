@@ -14,10 +14,11 @@ words = f2.read().split('\n')[:-1]
 guess_num = 0
 
 # m = M("Wordle")
-answer = words[random.randint(0, len(words))]
+# answer = words[random.randint(0, len(words))]
+answer = 'sever'
 print('the answer is', answer)
 
-sys.argv = ['main.py', 'hutch', 'hello', 'there', 'rents', 'blade', 'white']
+# sys.argv = ['main.py', 'hutch', 'hello', 'there', 'rents', 'blade', 'white']
 sys.argv = sys.argv[1:]
 print('sys.argv is', sys.argv)
 
@@ -34,12 +35,31 @@ print('sys.argv is', sys.argv)
 #     return words
 
 
+def determine_color(guess, answer, num=5, words=words):
+    allowed = []
+    for i in range(5):
+        if guess[i] == answer[i]:
+            words = list(filter(lambda word: word[i] == answer[i] , words))
+            allowed.append(guess[i])
+            print(guess[i], 'is green')
+        elif guess[i] in answer and guess[i] != answer[i]:
+            print(guess[i], 'is yellow')
+            allowed.append(guess[i])
+    return (words, allowed)
+
 def play(words=words, guess_num=guess_num, guess=sys.argv, allowed=[]):
     while len(sys.argv) > 0 and guess_num < 6:
-        for i in range(5):
-            if sys.argv[0][i] in answer:
-                words = list(filter(lambda word: sys.argv[0][i] in word, words))
-                allowed.append(sys.argv[0][i])
+        # for i in range(5):
+        #     if sys.argv[0][i] == answer[i]:
+        #         words = list(filter(lambda word: word[i] == answer[i] , words))
+        #         allowed.append(sys.argv[0][i])
+        #     elif sys.argv[0][i] in answer and sys.argv[0][i] != answer[i]:
+        #         print(sys.argv[0][i], 'is yellow')
+
+            #     words = list(filter(lambda word: sys.argv[i] in word and sys.argv[i] in answer and word[i] != answer[i], words))
+            #     allowed.append(sys.argv[0][i])
+        words, allowed = determine_color(sys.argv[0], answer, 5, words)
+
         allowed = list(set(allowed))
         # words = my_filter(words, allowed)
         guess_num += 1
@@ -47,7 +67,8 @@ def play(words=words, guess_num=guess_num, guess=sys.argv, allowed=[]):
         print(f'Current guess is {sys.argv[0]}')
         # print('allowed is', allowed)
         print(f'After guess {guess_num} there are {len(list(words))} words left')
-        print(allowed, ' are allowed.')
+        print('Words left: ', '\n\n', words)
+        print(' and '.join(allowed), ' are in the answer.')
         sys.argv = sys.argv[1:]
         return play(words=words, guess_num=guess_num, guess=sys.argv, allowed=allowed)
 
