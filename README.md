@@ -7,4 +7,4 @@ To use:
 1. Ignore all the files I deleted, they don't concern you
 2. Clone and cd into the repo
 3. Type python3 wordle.py followed by the words you want to guess into the command line (for example, python wordle.py steer stove swipe)
-4. It will show you how many guesses you have left
+4. It will show which letters are yellow, which letters are green, and how many guesses you have left
