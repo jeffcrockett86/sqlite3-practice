@@ -35,17 +35,21 @@ print('sys.argv is', sys.argv)
 #     return words
 
 
-def determine_color(guess, answer, num=5, words=words):
-    allowed = []
+def determine_color(guess, answer, num=5, words=words, allowed=[]):
+    if len(guess)==0:
+        return 'That\'s all folks'
     for i in range(5):
         if guess[i] == answer[i]:
             words = list(filter(lambda word: word[i] == answer[i] , words))
             allowed.append(guess[i])
             print(guess[i], 'is green')
-        elif guess[i] in answer and guess[i] != answer[i]:
+        if guess[i] in answer and guess[i] != answer[i]:
+            words = list(filter(lambda word: word[i] in answer and word[i] != answer[i] , words))
             print(guess[i], 'is yellow')
             allowed.append(guess[i])
-    return (words, allowed)
+        # else:
+        #     words = list(filter(lambda word: guess[i] not in word, words))
+    return determine_color(answer, guess=guess[1:][0], words=words, allowed=allowed)
 
 def play(words=words, guess_num=guess_num, guess=sys.argv, allowed=[]):
     while len(sys.argv) > 0 and guess_num < 6:
