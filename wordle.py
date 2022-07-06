@@ -4,9 +4,9 @@ import sys
 
 f2 = open('wordleAlpha.txt', 'r')
 words = f2.read().split('\n')[:-1]
-answer = words[random.randint(0, len(words))]
-# answer = 'sever'
-print('Answer is', answer)
+# answer = words[random.randint(0, len(words))]
+answer = 'fluff'
+print('Answer is', answer, '\n\n')
 
 
 def wordle(guesses, answer, words=words, allowed=[], word_length=5):
@@ -26,8 +26,8 @@ def wordle(guesses, answer, words=words, allowed=[], word_length=5):
             allowed.append(guess[i])
         if guess[i] not in answer:
                 words = list(filter(lambda word: guess[i] not in word, words))
-
-    print(f'There are {len(words)} words left')
+    if len(words) > 0:
+        print(f'There are {len(words)} words left')
     guesses = guesses[1:]
     return wordle(guesses, answer, words=words, allowed=allowed)
 
